@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="1200.0" spacing="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.uqac.projet.application.Controller">
+    <children>
+        <HBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="1200.0" spacing="15.0" GridPane.columnIndex="1">
+            <children>
+                <Label alignment="TOP_CENTER" text="Select a load balancing algorithm:">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <RadioButton contentDisplay="CENTER" mnemonicParsing="false" selected="true" text="Round robin">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="choiceAlgorithm" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Weighted round robin" toggleGroup="$choiceAlgorithm" />
+                <RadioButton mnemonicParsing="false" text="Random" toggleGroup="$choiceAlgorithm" />
+                <RadioButton mnemonicParsing="false" text="Weighted random" toggleGroup="$choiceAlgorithm" />
+            </children>
+            <GridPane.margin>
+                <Insets bottom="10.0" top="10.0" />
+            </GridPane.margin>
+        </HBox>
+        <HBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="1200.0" spacing="15.0">
+            <children>
+                <Label text="Devices" />
+                <Slider fx:id="devicesSlider" max="26" min="1" onMouseReleased="#updateDevicesSliderValue" />
+                <Label fx:id="devicesValue" />
+                <Label text="Servers" />
+                <Slider fx:id="serverSlider" max="10" min="1" onMouseReleased="#updateServersSliderValue" />
+                <Label fx:id="serversValue" />
+                <Label text="Max weight" />
+                <Slider fx:id="weightSlider" max="9" min="1" onMouseReleased="#updateWeightSliderValue" />
+                <Label fx:id="weightValue" />
+            </children>
+            <Button fx:id="changeButton" disable="true" mnemonicParsing="false" onMouseClicked="#applyChanges" text="Apply changes" />
+        </HBox>
+        <HBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="1200.0" spacing="15.0">
+            <Button fx:id="resetButton" mnemonicParsing="false" onMouseClicked="#reset" text="Reset" />
+            <Button fx:id="connectButton" mnemonicParsing="false" onMouseClicked="#connectAll" text="Connect all devices" />
+        </HBox>
+        <Canvas fx:id="canvas" height="700.0" onMouseClicked="#modifyCanvas" width="1200" />
+    </children>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
+</VBox>
